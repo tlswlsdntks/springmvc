@@ -1,4 +1,4 @@
-package hello.springmvc.basic;
+ackage hello.springmvc.basic;
 
 import lombok.Data;
 
