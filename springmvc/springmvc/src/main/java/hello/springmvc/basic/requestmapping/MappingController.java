@@ -12,12 +12,14 @@ public class MappingController {
 
     // private Logger log = LoggerFactory.getLogger(getClass());
 
+    // http://localhost:8080/hello-basic
     @RequestMapping(value = "/hello-basic")
     public String helloBasic() {
         log.info("helloBasic");
         return "ok";
     }
 
+    // http://localhost:8080/mapping-get-v1", RequestMethod.GET
     @RequestMapping(value = "/mapping-get-v1", method = RequestMethod.GET)
     public String mappingGetV1() {
         log.info("mappingGetV1");
@@ -32,6 +34,7 @@ public class MappingController {
      * @DeleteMapping
      * @PatchMapping
      */
+    // http://localhost:8080/mapping-get-v2", @GetMapping
     @GetMapping("/mapping-get-v2")
     public String mappingGetV2() {
         log.info("mapping-get-v2");
@@ -45,6 +48,7 @@ public class MappingController {
      * @PathVariable("userId") String userId -> @PathVariable userId
      * /mapping/userA
      */
+    // http://localhost:8080/mapping/${useId}", @GetMapping
     @GetMapping("/mapping/{userId}")
     public String mappingPath(@PathVariable("userId") String data) {
         log.info("mappingPath userId={}", data);
@@ -54,6 +58,7 @@ public class MappingController {
     /**
      * PathVariable 사용 다중
      */
+    // http://localhost:8080/mapping/users/${useId}/orders/{orderId}", @GetMapping
     @GetMapping("/mapping/users/{userId}/orders/{orderId}")
     public String mappingPath(@PathVariable String userId, @PathVariable Long orderId) {
         log.info("mappingPath userId={}, orderId={}", userId, orderId);
@@ -68,6 +73,7 @@ public class MappingController {
      * params="mode!=debug" (! = )
      * params = {"mode=debug","data=good"}
      */
+    // http://localhost:8080/mapping-param?mode=debug", @GetMapping
     @GetMapping(value = "/mapping-param", params = "mode=debug")
     public String mappingParam() {
         log.info("mappingParam");
@@ -81,6 +87,7 @@ public class MappingController {
      * headers="mode=debug"
      * headers="mode!=debug" (! = )
      */
+    // http://localhost:8080/mapping-header", mode: debug, @GetMapping
     @GetMapping(value = "/mapping-header", headers = "mode=debug")
     public String mappingHeader() {
         log.info("mappingHeader");
@@ -95,6 +102,7 @@ public class MappingController {
      * consumes = "*\/*"
      * consumes = MediaType.APPLICATION_JSON_VALUE
      */
+    // http://localhost:8080/mapping-consume", Content-Type: application/json, @PostMapping
     @PostMapping(value = "/mapping-consume", consumes = MediaType.APPLICATION_JSON_VALUE)
     public String mappingConsumes() {
         log.info("mappingConsumes");
@@ -109,6 +117,7 @@ public class MappingController {
      * produces = "*\/*"
      * produces = MediaType.TEXT_HTML_VALUE
      */
+    // http://localhost:8080/mapping-produce", Accept: text/html, @PostMapping
     @PostMapping(value = "/mapping-produce", produces = MediaType.TEXT_HTML_VALUE)
     public String mappingProduces() {
         log.info("mappingProduces");
