@@ -14,6 +14,7 @@ import java.io.IOException;
 @Controller
 public class RequestParamController {
 
+    // localhost:8080/request-param-v1?username=1&age=2
     @RequestMapping("/request-param-v1")
     public void requestParamV1(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String username = request.getParameter("username");
@@ -26,6 +27,7 @@ public class RequestParamController {
         response.getWriter().write("ok");
     }
 
+    // localhost:8080/request-param-v2?username=1&age=2
     @RequestMapping("/request-param-v2")
     @ResponseBody
     public String requestParamV2(
@@ -37,6 +39,7 @@ public class RequestParamController {
         return "ok";
     }
 
+    // localhost:8080/request-param-v3?username=1&age=2
     @RequestMapping("/request-param-v3")
     @ResponseBody
     public String requestParamV3 (
