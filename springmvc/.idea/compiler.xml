@@ -11,5 +11,9 @@
         <module name="springmvc.springmvc.main" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="springmvc.springmvc.main~1" target="11" />
+      <module name="springmvc.springmvc.test~1" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
