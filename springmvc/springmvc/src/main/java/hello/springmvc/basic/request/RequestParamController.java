@@ -61,11 +61,23 @@ public class RequestParamController {
     }
 
     // localhost:8080/request-param-required?username=id&age=2
-    // localhost:8080/request-param-required?username=id&age=
-    // age= -> Integer age는 null 가능이므로 에러가 발생하지않는다
+    // localhost:8080/request-param-required?username=id&age=, 에러 발생
     @ResponseBody
     @RequestMapping("/request-param-required")
     public String requestParamRequired (
+            @RequestParam(required = true) String username,
+            @RequestParam(required = false) int age){
+
+        log.info("username={}, age={}", username, age);
+        return "ok";
+    }
+
+    // localhost:8080/request-param-required?username=id&age=2
+    // localhost:8080/request-param-required?username=id&age=
+    // age= -> Integer age는 null 가능이므로 에러가 발생하지않는다
+    @ResponseBody
+    @RequestMapping("/request-param-required2")
+    public String requestParamRequired2 (
             @RequestParam(required = true) String username,
             @RequestParam(required = false) Integer age){
 
