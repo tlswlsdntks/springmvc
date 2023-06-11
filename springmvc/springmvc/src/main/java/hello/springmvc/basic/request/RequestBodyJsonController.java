@@ -71,6 +71,7 @@ public class RequestBodyJsonController {
         return "ok";
     }
 
+    // localhost:8080/request-body-json-v5, {"username" : name, "age" : 30}
     @ResponseBody
     @PostMapping("/request-body-json-v5")
     public HelloData requestBodyJsonV5(@RequestBody HelloData data) throws JsonProcessingException {
