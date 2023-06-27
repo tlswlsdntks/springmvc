@@ -4,6 +4,7 @@
 <%
     // request, response 사용가능
     MemberRepository memberRepository = MemberRepository.getInstance();
+
     System.out.println("MemberSaveServlet.service");
 
     String username = request.getParameter("username");
