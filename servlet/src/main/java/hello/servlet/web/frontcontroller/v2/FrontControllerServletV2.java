@@ -1,7 +1,7 @@
 package hello.servlet.web.frontcontroller.v2;
 
 import hello.servlet.web.frontcontroller.MyView;
-import hello.servlet.web.frontcontroller.v2.controller.MemberFormControllerV2;
+import hello.servlet.web.frontcontroller.v2.controller.MemberFromControllerV2;
 import hello.servlet.web.frontcontroller.v2.controller.MemberListControllerV2;
 import hello.servlet.web.frontcontroller.v2.controller.MemberSaveControllerV2;
 
@@ -20,24 +20,23 @@ public class FrontControllerServletV2 extends HttpServlet {
     private Map<String, ControllerV2> controllerMap = new HashMap<>();
 
     public FrontControllerServletV2() {
-        controllerMap.put("/front-controller/v2/members/new-form", new MemberFormControllerV2());
+        controllerMap.put("/front-controller/v2/members/new-form", new MemberFromControllerV2());
         controllerMap.put("/front-controller/v2/members/save", new MemberSaveControllerV2());
         controllerMap.put("/front-controller/v2/members", new MemberListControllerV2());
     }
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String requestURI = request.getRequestURI();
-        System.out.println("requestURI: " + requestURI);
+        System.out.println("frontControllerServletV2.service");
 
-        ControllerV2 controllerV2 = controllerMap.get(requestURI);
-        if(controllerV2 == null){
+        String requestURI = request.getRequestURI();
+        ControllerV2 controller = controllerMap.get(requestURI);
+        if(controller == null){
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
 
-        MyView myView = controllerV2.process(request, response);
-        System.out.println("myView.getViewPath(): " + myView.getViewPath());
+        MyView myView = controller.process(request, response);
         myView.render(request, response);
     }
 }

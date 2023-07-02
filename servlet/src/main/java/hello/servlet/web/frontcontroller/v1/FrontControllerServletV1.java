@@ -29,13 +29,12 @@ public class FrontControllerServletV1 extends HttpServlet {
         System.out.println("FrontControllerServletV1.service");
 
         String requestURI = request.getRequestURI();
-        ControllerV1 controllerV1 = controllerMap.get(requestURI);
-
-        if(controllerV1 == null){
+        ControllerV1 controller = controllerMap.get(requestURI);
+        if(controller == null){
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
 
-        controllerV1.process(request, response);
+        controller.process(request, response);
     }
 }
