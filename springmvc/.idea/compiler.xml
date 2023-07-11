@@ -11,8 +11,11 @@
         <module name="springmvc.main" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="11">
+      <module name="springmvc.springmvc" target="11" />
+      <module name="springmvc.springmvc.main" target="11" />
       <module name="springmvc.springmvc.main~1" target="11" />
+      <module name="springmvc.springmvc.test" target="11" />
       <module name="springmvc.springmvc.test~1" target="11" />
     </bytecodeTargetLevel>
   </component>
