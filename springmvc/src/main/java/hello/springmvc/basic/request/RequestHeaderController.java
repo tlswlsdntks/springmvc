@@ -22,7 +22,7 @@ public class RequestHeaderController {
         HttpServletResponse response,
         HttpMethod httpMethod,
         Locale locale,
-        @RequestHeader MultiValueMap<String, String> headerMap,
+        @RequestHeader MultiValueMap<String, Object> headerMap,
         @RequestHeader("host") String host,
         @CookieValue(value = "myCookie", required = false) String cookie){
         log.info("request={}", request);
